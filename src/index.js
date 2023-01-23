@@ -5,7 +5,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-axios.defaults.baseURL = "https://fakestoreapi.com"
+axios.defaults.baseURL = "https://ecommerce-backend-production-20d5.up.railway.app"
+
+axios.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token")
+  if(token) {
+    config.headers.Authorization = `Bearer ${token}`
+  }
+  return config
+})
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

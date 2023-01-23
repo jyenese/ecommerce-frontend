@@ -18,7 +18,7 @@ import ProductInfo from "./components/ProductInfo"
 
 import AddProduct from "./components/AddProduct"
 import Login from "./components/Login"
-
+import Register from "./components/Register"
 //rename named exports using as
 // import {Button as ProductListButton} from "another file"
 
@@ -44,9 +44,10 @@ function App() {
         createRoutesFromElements(
             <Route path="/" element={<MainPage />} errorElement={<NotFound />}>
                 <Route path="login" element={<Login />} />
+                <Route path ="register" element={<Register />} />
                 <Route element={<ProtectedRoute />}>
                     <Route path="products/add" element={<AddProduct />} />
-                    <Route path="cart" element={<Cart />} loader={loader} />
+                    <Route path="cart" element={<Cart />} loader={store.token ? loader: () => null} />
                 </Route>
                 <Route path="product/:productId" element={<ProductInfo />} />
                 <Route path="/" element={<ProductList />} />

@@ -66,6 +66,7 @@ function NavBar() {
                             Logout
                         </button>
                     ) : (
+                        <>
                         <button
                             onClick={() => {
                                 navigate("login")
@@ -73,6 +74,14 @@ function NavBar() {
                         >
                             Login
                         </button>
+                        <button
+                            onClick={() => {
+                                navigate("register")
+                        }}
+                        >
+                            Register
+                    </button>
+                        </>
                     )}
                 </Toolbar>
             </Container>
